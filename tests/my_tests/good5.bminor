@@ -1,0 +1,4 @@
+x: integer;
+y: integer = 123;
+b: boolean = false;
+c: char    = 'q';

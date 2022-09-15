@@ -1,0 +1,5 @@
+COMMENT // test comparotors and boolean logic
+IF if
+OPEN_PAREN (
+IDENTIFIER a
+scan error: | is not a valid token

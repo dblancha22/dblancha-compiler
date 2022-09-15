@@ -1,0 +1,19 @@
+// An arithmetic expression statement.
+y = m*x + b;
+
+// A return statement.
+return (f-32)*5/9;
+
+// An if-else statement.
+if( temp>100 ) {
+    print "It's really hot!\n";
+} else if( temp>70 ) {
+    print "It's pretty warm.\n";
+} else {
+    print "It's not too bad.\n";
+}
+
+// A for loop statement.
+for( i=0; i<100; i++ ) {
+    print i;0
+}
