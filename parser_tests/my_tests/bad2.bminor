@@ -1,0 +1,7 @@
+main:function void()=
+{
+	for(i=0; i++) {
+        if (i+5>88)
+		    print i;
+	}
+}

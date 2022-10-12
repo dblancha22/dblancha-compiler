@@ -1,0 +1,5 @@
+main:function void()=
+{
+    x:integer = -5;
+    z:integer = x+25-7/2^5;
+}

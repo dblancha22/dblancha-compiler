@@ -1,0 +1,30 @@
+COMMENT // strings
+IDENTIFIER str
+COLON :
+STRING string
+EQUALS =
+STRING_LITERAL 
+SEMICOLON ;
+IDENTIFIER str
+COLON :
+STRING string
+EQUALS =
+STRING_LITERAL we can write an escaped backslash \
+SEMICOLON ;
+STRING_LITERAL  "this is a unique test case " sh \
+SEMICOLON ;
+STRING_LITERAL  
+ t 
+STRING_LITERAL e r y
+IDENTIFIER str
+COLON :
+STRING string
+EQUALS =
+STRING_LITERAL single qoute ' or ' 
+SEMICOLON ;
+IDENTIFIER str
+COLON :
+STRING string
+EQUALS =
+STRING_LITERAL  double qoute " r ' 
+SEMICOLON ;

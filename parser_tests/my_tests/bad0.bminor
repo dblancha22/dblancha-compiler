@@ -1,0 +1,5 @@
+main: function void() =
+{
+    if(x > 5) z:3;
+	x:integer = 5 ** 5;
+}

@@ -1,0 +1,5 @@
+main:function void()=
+{
+	x:char = 'c';
+    y::char = 'x';
+}

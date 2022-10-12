@@ -1,0 +1,5 @@
+x:integer = 5;
+main:function void()=
+{
+	print x;
+}

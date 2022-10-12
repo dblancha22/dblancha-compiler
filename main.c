@@ -8,6 +8,8 @@ extern int yylex();
 extern int yyleng;
 extern char *yytext;
 
+typedef enum yytokentype token_t;
+
 int scan(char* f);
 char* escape_chars();
 void print_token(token_t t);
@@ -18,6 +20,8 @@ int main(int argc, char** argv) {
     for (i = 1; i < argc && argv[i][0] == '-'; i++) {
         if (!strcmp(argv[i], "-scan")) {
             return scan(argv[i+1]); 
+        } else if (!strcmp(argv[i], "-parse")) {
+            return parse(argv[i+1]);
         }
     }
 
@@ -56,6 +60,27 @@ int scan(char* f) {
 	}
 
     return 0;
+}
+
+int parse(char *f) {
+    if (!f) {
+        printf("Missing file.\n");
+        return 1;
+    }
+
+	yyin = fopen(f,"r");
+	if (!yyin) {
+		printf("unable to open %s!\n", f);
+		return 1;
+	}
+
+    if(yyparse() == 0) {
+        printf("Parse successful: \n");
+        return 0;
+    }
+
+    printf("Parse unsuccessful: %s\n", yytext);
+    return 1;
 }
 
 
@@ -144,9 +169,6 @@ void print_token(token_t t) {
             break;
         case TOKEN_ERROR:
             printf("TOKEN_ERROR %s\n", yytext);
-            break;
-        case COMMENT:
-            printf("COMMENT %s\n", yytext);
             break;
         case REMAINDER:
             printf("REMAINDER %s\n", yytext);

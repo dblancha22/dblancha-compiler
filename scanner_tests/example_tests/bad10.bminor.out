@@ -1,0 +1,2 @@
+COMMENT // invalid character
+scan error: ' is not a valid token

@@ -1,0 +1,7 @@
+main:function void()=
+{
+	inner:function char()= {
+        x:char = 'w';
+        return x;
+    }
+}

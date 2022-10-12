@@ -9,8 +9,8 @@ LETSNUMS [A-Za-z0-9]
 %%
 [\t\n \r]
 
-\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+\/ { return COMMENT; }
-\/\/.*                                      { return COMMENT; }
+\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+\/ 
+\/\/.*                                      
 
 [\"]([^\"\\\n]|\\(.|\n))*[\"] { return STRING_LITERAL; }
 
@@ -19,7 +19,7 @@ auto         { return AUTO; }
 boolean      { return BOOLEAN; }
 char         { return CHAR; }
 else         { return ELSE; }
-false        { return FALSE; }
+false        { return BOOLEAN_LITERAL; }
 for          { return FOR; }
 function     { return FUNCTION; }
 if           { return IF; }
@@ -27,7 +27,7 @@ integer      { return INTEGER; }
 print        { return PRINT; }
 return       { return RETURN; }
 string       { return STRING; }
-true         { return TRUE; }
+true         { return BOOLEAN_LITERAL; }
 void         { return VOID; }
 while        { return WHILE; }
 && { return AND; }
@@ -53,7 +53,7 @@ while        { return WHILE; }
 ({LETTERS}|_)+({LETSNUMS}|_)* { return IDENTIFIER; }
 
 '([^\'\\\n]|\\(.|\n))' { return CHAR_LITERAL; }
-[+-]?{DIGIT}+ { return INTEGER_LITERAL; }
+{DIGIT}+ { return INTEGER_LITERAL; }
 
 % { return REMAINDER; }
 \^ { return EXP; }

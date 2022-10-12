@@ -1,0 +1,8 @@
+
+f: function integer () = {
+    for(x = 0; x < 5; x++)
+		if( 4 < 5 )
+			print "helloo\n";
+		else
+			print "hello\n";
+}

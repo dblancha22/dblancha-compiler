@@ -1,0 +1,6 @@
+main:function void()=
+{
+	x:5;
+    x:7;
+    x:9;
+}
