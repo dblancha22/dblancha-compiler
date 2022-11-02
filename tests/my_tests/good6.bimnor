@@ -1,3 +1,0 @@
-a: auto = 10;
-b: auto = "hello";
-c: auto = a < 100;

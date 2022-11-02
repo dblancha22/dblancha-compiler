@@ -1,0 +1,8 @@
+main:function void()=
+{
+	if(5>4) {
+        print "nah dats cap";
+    } else {
+        print "yuh";
+    
+}

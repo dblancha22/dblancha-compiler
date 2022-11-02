@@ -17,7 +17,11 @@ struct decl {
 };
 
 struct decl * decl_create( char *name, struct type *type, struct expr *value, struct stmt *code, struct decl *next );
-void decl_print( struct decl *d, int indent );
+struct decl *decl_create_func(char *name, struct type *type, struct stmt *code);
+struct decl *decl_create_list(struct decl *curr, struct decl *next); 
+
+void decl_print(struct decl *d);
+void decl_print_list(struct decl *d);
 
 #endif
 

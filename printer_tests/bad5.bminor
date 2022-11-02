@@ -1,0 +1,4 @@
+main:function void()=
+{
+	x:array boolean = {1, 0, 1};
+}

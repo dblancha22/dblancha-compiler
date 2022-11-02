@@ -1,5 +1,0 @@
-integer = int 
-string = str
-character = char
-" this would work
- but its on 2 lines"

@@ -1,0 +1,6 @@
+main:function void()=
+{
+	x:integer = 0;
+    y:integer = 1;
+    z::integer = 2;
+}

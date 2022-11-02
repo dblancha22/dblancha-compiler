@@ -1,3 +1,0 @@
-COMMENT // doesn't support floating point
-INTEGER_LITERAL 50006
-scan error: . is not a valid token
