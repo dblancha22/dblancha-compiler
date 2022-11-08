@@ -1,0 +1,10 @@
+main: function void () = {
+    x: string = "d";
+    y: integer = 0;
+    for (; ; )
+    {
+        if (x == "d")
+            y ++ ;
+    }
+
+}

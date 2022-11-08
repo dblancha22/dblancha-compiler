@@ -1,0 +1,39 @@
+a: array[] integer = {100, 200, 300, 400, 500, 600, 700, 800, 900};
+
+b: array[] integer;
+
+
+c: array[] array[] integer;
+
+
+testfunc: function void () = {
+    i: integer;
+
+    j: integer;
+
+    for (; ; )
+    {
+        b[i] = a[i] * 10;
+    }
+    for (; ; )
+    {
+        b[i * 2] = a[i] + b[i];
+    }
+    for (; ; )
+    {
+        for (; ; )
+        {
+            c[i][j] = i * j;
+        }
+    }
+    for (; ; )
+    {
+        for (; ; )
+        {
+            print c[i][j];
+            print " ";
+        }
+        print "\n";
+    }
+
+}
