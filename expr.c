@@ -68,8 +68,9 @@ struct expr * expr_create_tern( struct expr *left, struct expr *mid, struct expr
 }
 
 struct expr * expr_create_list( struct expr *curr, struct expr *next) {
-    curr->next = next;
-    return curr;
+    struct expr *e1 = expr_create(EXPR_LIST, curr, NULL);
+    e1->mid = next;
+    return e1;
 }
 
 void print_list(struct expr *e) 
@@ -120,10 +121,7 @@ struct expr * expr_create_indeces(struct expr *curr, struct expr *next)
 struct expr * expr_create_arr_literal(struct expr *next)
 {
     struct expr* e1 = expr_create(EXPR_ARR, NULL, NULL);
-    struct expr* e2 = expr_create(EXPR_LIST, NULL, NULL);
-
-    e2->next = next;
-    e1->mid = e2;
+    e1->mid = next;
     return e1;
 }
 

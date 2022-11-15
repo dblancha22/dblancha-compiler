@@ -1,0 +1,1 @@
+type error: can't return a char () in a function that returns integer

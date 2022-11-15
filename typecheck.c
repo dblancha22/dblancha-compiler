@@ -318,6 +318,7 @@ struct type *expr_typecheck(struct expr *e)
             struct type *arr_type = expr_typecheck(e1->left);
             while(e1) {
                 struct type *e1_type = expr_typecheck(e1->left);
+                
                 if(!type_equals(e1_type, arr_type) ) {
                     type_print(e1_type);
                     printf(" (");
@@ -351,15 +352,17 @@ struct type *expr_typecheck(struct expr *e)
             break;
     }
 
-
+    return check;
 
 }
 
 void decl_typecheck(struct decl *d)
 {
     if(!d) return;
+
     if(d->value) {
         struct type *e_type = expr_typecheck(d->value);
+        
         if(!type_equals(d->type, e_type) && d->type->kind != TYPE_AUTO) {
             printf("type error: can't assign a ");
             type_print(e_type);
@@ -372,7 +375,7 @@ void decl_typecheck(struct decl *d)
         }
         if(d->type->kind == TYPE_ARRAY) {
             struct type *t1 = d->type;
-            while(t1->kind = TYPE_ARRAY) {
+            while(t1->kind == TYPE_ARRAY) {
                 if(t1->expr->kind != EXPR_INT) {
                     printf("type error: must use integer in array size declarations, not ");
                     expr_print(t1->expr, NULL);

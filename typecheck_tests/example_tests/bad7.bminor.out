@@ -1,0 +1,6 @@
+test2 resolves to global test2
+test2 resolves to global test2
+test2 resolves to global test2
+a resolves to global 0
+b resolves to global 1
+type error: can't assign a boolean () to a integer

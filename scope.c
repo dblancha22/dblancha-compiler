@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 struct scope * scope_stack;
+int r_err = 0;
 
 void scope_enter()
 {
@@ -26,11 +27,29 @@ void scope_exit()
 void scope_bind(const char *name, struct symbol *s)
 {
     s->which = scope_stack->dist;
-    if(hash_table_insert(scope_stack->hash, name, s) == 1) {
+    if(s->type->kind != TYPE_FUNCTION && hash_table_insert(scope_stack->hash, name, s) != 1) {
         printf("resolve error: %s is already defined in this scope\n", s->name);
+        r_err = 1;
+    } else if (s->type->kind == TYPE_FUNCTION) {
+        struct symbol *s1 = hash_table_lookup(scope_stack->hash, name);
+        if(s1 && s1->prototype == 0){
+            printf("resolve error: %s is already defined in this scope\n", s->name);
+            r_err = 1;
+        } else if(s1 && s1->prototype == 1 && s->prototype == 0) {
+            if(!type_equals(s1->type, s->type) ) {
+                printf("resolve error: %s has the wrong parameters\n", s->name);
+                r_err = 1;
+            }
+            s1->prototype = 0;
+        } else if (!s1) {
+            hash_table_insert(scope_stack->hash, name, s);
+        }
     }
+
+
     scope_stack->dist += 1;
 }
+
 int scope_level()
 {
     if(scope_stack->next) return 1;
@@ -56,6 +75,7 @@ struct symbol *scope_lookup(const char *name)
         curr = curr->next;
     }
     printf("resolve error: %s is not defined\n", name);
+    r_err = 1;
 
     return NULL;
 }

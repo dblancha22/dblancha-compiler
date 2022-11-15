@@ -1,0 +1,6 @@
+intFxn resolves to global intFxn
+c resolves to global c
+c resolves to global c
+intFxn resolves to global intFxn
+glob resolves to global glob
+c resolves to global 0

@@ -15,7 +15,7 @@ struct decl *decl_create(char *name, struct type *type, struct expr *value, stru
 
 struct decl *decl_create_func(char *name, struct type *type, struct stmt *code)
 {
-    struct stmt *s = stmt_create(STMT_LIST, NULL, NULL, NULL, NULL, code, NULL, NULL);
+    struct stmt *s = stmt_create(STMT_LIST, NULL, NULL, NULL, NULL, NULL, NULL, code);
     struct decl *d = decl_create(name, type, NULL, s, NULL);
     return d;
 }

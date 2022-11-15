@@ -1,0 +1,6 @@
+a resolves to global 0
+b resolves to global 1
+test2 resolves to global test2
+a resolves to global 0
+b resolves to global 1
+a resolves to global 0

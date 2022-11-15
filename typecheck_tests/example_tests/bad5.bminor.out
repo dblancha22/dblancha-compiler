@@ -1,0 +1,3 @@
+y resolves to global y
+type error: can't AND a boolean () and a char () (both must be booleans)
+ 

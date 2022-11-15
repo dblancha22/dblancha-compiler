@@ -106,7 +106,7 @@ decl_var: IDENTIFIER COLON type_var SEMICOLON { $$ = decl_create($1, $3, NULL, N
         | IDENTIFIER COLON type_var_arr EQUALS expr_1 SEMICOLON { $$ = decl_create($1, $3, $5, NULL, NULL); }
         ;
 
-decl_func: IDENTIFIER COLON FUNCTION type_func EQUALS OPEN_CURLY bunch_o_stmts CLOSE_CURLY { $$ = decl_create_func($1, $4, $7); }
+decl_func: IDENTIFIER COLON FUNCTION type_func EQUALS OPEN_CURLY stmts_epsilon CLOSE_CURLY { $$ = decl_create_func($1, $4, $7); }
          | IDENTIFIER COLON FUNCTION type_func SEMICOLON { $$ = decl_create($1, $4, NULL, NULL, NULL); }
          ;
 
@@ -269,7 +269,7 @@ expr_epsilon: expr_list { $$ = $1; }
             ;
 
 expr_list: expr_1 COMMA expr_list { $$ = expr_create_list($1, $3); }
-         | expr_1 { $$ = $1; }
+         | expr_1 { $$ = expr_create_list($1, NULL); }
          ;
 
 expr: INTEGER_LITERAL { $$ = expr_create_integer_literal(atoi($1) ); }

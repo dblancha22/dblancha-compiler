@@ -5,8 +5,10 @@ void decl_resolve(struct decl *d)
 {
     if (!d)
         return;
+
     symbol_t kind = scope_level() > 1 ? SYMBOL_LOCAL : SYMBOL_GLOBAL;
     d->symbol = symbol_create(kind, d->type, d->name);
+
     if(!d->code && d->type->kind == TYPE_FUNCTION) {
         d->symbol->prototype = 1;
     }
@@ -70,6 +72,7 @@ void stmt_resolve(struct stmt *s)
         case STMT_LIST:
             break;
     }
+
     stmt_resolve(s->next);
     
 }

@@ -17,6 +17,7 @@ extern char *yytext;
 extern struct decl *root;
 extern struct scope *scope_stack;
 extern int err;
+extern int r_err;
 
 typedef enum yytokentype token_t;
 
@@ -143,11 +144,17 @@ int resolve(char *f)
         return 1;
     }
 
+    if (yyparse() != 0) {
+        printf("parse failed\n");
+        return 1;
+    }
+
     scope_enter();
     decl_resolve(root);
     scope_exit();
 
-    return 0;
+
+    return r_err;
 }
 
 int typecheck(char *f)
@@ -156,6 +163,7 @@ int typecheck(char *f)
     {
         return 1;
     }
+
     decl_typecheck(root);
 
     return err;

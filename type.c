@@ -8,6 +8,7 @@ struct type *type_create(type_t kind, struct type *subtype, struct param_list *p
     t->kind = kind;
     t->subtype = subtype;
     t->params = params;
+    t->expr = NULL;
 
     return t;
 }
@@ -30,6 +31,7 @@ int type_equals(struct type *t1, struct type *t2)
 {
     if(!t1 && !t2) return 1;
     if(!t1 || !t2) return 0;
+    
     if(t1->kind == t2->kind && type_equals(t1->subtype, t2->subtype) ) {
         if(t1->kind == TYPE_ARRAY && t1->expr && t2->expr && t1->expr->literal_value != t2->expr->literal_value && param_list_equals(t1->params, t2->params) ) {
             return 0;
