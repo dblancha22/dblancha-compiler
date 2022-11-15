@@ -1,0 +1,29 @@
+x: integer = 65;
+
+s: string = "hello";
+
+b: boolean =  true ;
+
+min: function integer (a: integer, b: integer) = {
+    if (a < b)
+        return ;
+    else
+        return ;
+
+}
+
+testfunc: function void (z: integer) = {
+    y: integer = x * ((x * 10 + 55 % 6) + z / 10);
+    print "y: ", y, "\n";
+    c: boolean = x < 100 && y > 200 ||  !b =  false ;
+    print "c: ", c, "\n";
+    d: boolean = s == "goodbye";
+    print "d: ", d, "\n";
+    z = y = x;
+    a: array[] integer;
+
+    y = min(a[10], a[20]);
+    q: boolean = z < 10 ?  false  :  true ;
+    r: boolean = z > 10 ? min(a[10], a[20]) : min(a[20], a[10]);
+
+}

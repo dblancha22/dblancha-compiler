@@ -1,0 +1,9 @@
+main: function void () = {
+    x: string = "|/| |_| |)";
+    i: integer = 0;
+    for (; ; )
+    {
+        print x[i];
+    }
+
+}
