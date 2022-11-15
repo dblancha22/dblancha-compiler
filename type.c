@@ -26,6 +26,27 @@ struct type *type_create_arr(struct expr *e, struct type *t)
     return t1;
 }
 
+int type_equals(struct type *t1, struct type *t2) 
+{
+    if(!t1 && !t2) return 1;
+    if(!t1 || !t2) return 0;
+    if(t1->kind == t2->kind && type_equals(t1->subtype, t2->subtype) ) {
+        if(t1->kind == TYPE_ARRAY && t1->expr && t2->expr && t1->expr->literal_value != t2->expr->literal_value && param_list_equals(t1->params, t2->params) ) {
+            return 0;
+        }
+        return 1;
+    }
+    return 0;
+}
+
+struct type * type_copy(struct type *t)
+{
+    if(!t) return NULL;
+    struct type *new_type = type_create(t->kind, type_copy(t->subtype), param_list_copy(t->params) );
+    new_type->expr = t->expr;
+    return new_type;
+}
+
 void type_print(struct type *t)
 {
     if(!t) return;

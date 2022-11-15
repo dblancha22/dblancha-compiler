@@ -3,6 +3,9 @@
 #include "stmt.h"
 #include "type.h"
 #include "decl.h"
+#include "scope.h"
+#include "resolve.h"
+#include "typecheck.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,6 +15,8 @@ extern int yylex();
 extern int yyleng;
 extern char *yytext;
 extern struct decl *root;
+extern struct scope *scope_stack;
+extern int err;
 
 typedef enum yytokentype token_t;
 
@@ -20,9 +25,13 @@ char* escape_chars();
 void print_token(token_t t);
 int parse(char *f);
 int print(char *f);
+int resolve(char *f);
+int typecheck(char *f);
 
 
-int main(int argc, char** argv) {
+
+int main(int argc, char **argv)
+{
 
     int i;
     for (i = 1; i < argc && argv[i][0] == '-'; i++) {
@@ -32,12 +41,15 @@ int main(int argc, char** argv) {
             return parse(argv[i+1]);
         } else if (!strcmp(argv[i], "-print")) {
             return print(argv[i+1]);
+        } else if (!strcmp(argv[i], "-resolve")) {
+            return resolve(argv[i+1]);
+        } else if (!strcmp(argv[i], "-typecheck")) {
+            return typecheck(argv[i+1]);
         }
     }
 
     return 0;
 }
-
 
 int scan(char* f) {
     if (!f) {
@@ -115,6 +127,39 @@ int print(char *f) {
     decl_print_list(root);
 
     return 0;
+
+}
+
+int resolve(char *f) 
+{
+    if(!f) {
+        printf("Missing file.\n");
+        return 1;
+    } 
+
+    yyin = fopen(f, "r");
+    if(!yyin) {
+        printf("unable to open %s!\n", f);
+        return 1;
+    }
+
+    scope_enter();
+    decl_resolve(root);
+    scope_exit();
+
+    return 0;
+}
+
+int typecheck(char *f)
+{
+    if (resolve(f) == 1)
+    {
+        return 1;
+    }
+    decl_typecheck(root);
+
+    return err;
+
 
 }
 

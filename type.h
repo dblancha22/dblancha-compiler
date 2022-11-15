@@ -25,5 +25,7 @@ struct type * type_create( type_t kind, struct type *subtype, struct param_list 
 struct type * type_create_func(type_t kind, struct param_list *params);
 struct type * type_create_arr(struct expr *e, struct type * t);
 void type_print( struct type *t );
+int type_equals(struct type *t1, struct type *t2);
+struct type *type_copy(struct type *t);
 
 #endif

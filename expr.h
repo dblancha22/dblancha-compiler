@@ -31,8 +31,10 @@ typedef enum {
 	EXPR_TERN,
 	EXPR_LIST,
 	EXPR_FUNC, 
+	EXPR_ARG,
 	EXPR_ARR,
-	EXPR_ARR_START
+	EXPR_ARR_START,
+	EXPR_INDEX
 	/* many more kinds of exprs to add here */
 } expr_t;
 
@@ -61,8 +63,10 @@ struct expr * expr_create_string_literal( const char *str );
 struct expr * expr_create_tern( struct expr *left, struct expr *mid, struct expr *right );
 struct expr * expr_create_list( struct expr *curr, struct expr *next);
 struct expr * expr_create_func(char *func, struct expr *args);
+struct expr * expr_create_args(struct expr *curr, struct expr *next);
 struct expr *expr_create_arr_start(char *name, struct expr *bracks);
-struct expr * expr_create_arr_literal(struct expr *next);
+struct expr *expr_create_indeces(struct expr *curr, struct expr *next);
+struct expr *expr_create_arr_literal(struct expr *next);
 
 void expr_print( struct expr *p, struct expr *e );
 void expr_print_curr(struct expr *e);

@@ -78,7 +78,7 @@
 
 %type <str> INTEGER_LITERAL CHAR_LITERAL STRING_LITERAL BOOLEAN_LITERAL IDENTIFIER
 
-%type <expr> expr_1 expr_2 expr_3 expr_4 expr_5 expr_6 expr_7 expr_8 expr_9 expr_10 expr expr_list expr_epsilon func_call array_start brack_list expr_1_epsilon if_loop
+%type <expr> expr_1 expr_2 expr_3 expr_4 expr_5 expr_6 expr_7 expr_8 expr_9 expr_10 expr expr_list expr_epsilon func_call func_args func_args_e array_start brack_list expr_1_epsilon if_loop
 
 %type <stmt> stmt_0 if_stmt else_stmt closed_if stmt stmts_epsilon bunch_o_stmts
 
@@ -249,12 +249,20 @@ expr_10: OPEN_PAREN expr_1 CLOSE_PAREN { $$ = $2; }
 array_start: IDENTIFIER brack_list { $$ = expr_create_arr_start($1, $2); }
             ;
 
-brack_list: OPEN_BRACK expr_1 CLOSE_BRACK brack_list { $$ = expr_create_list($2, $4); }
-          | OPEN_BRACK expr_1 CLOSE_BRACK { $$ = $2; }
+brack_list: OPEN_BRACK expr_1 CLOSE_BRACK brack_list { $$ = expr_create_indeces($2, $4); }
+          | OPEN_BRACK expr_1 CLOSE_BRACK { $$ = expr_create_indeces($2, NULL); }
           ;
 
-func_call: IDENTIFIER OPEN_PAREN expr_epsilon CLOSE_PAREN { $$ = expr_create_func($1, $3); }
+func_call: IDENTIFIER OPEN_PAREN func_args_e CLOSE_PAREN { $$ = expr_create_func($1, $3); }
          ;
+
+func_args: expr_1 COMMA func_args { $$ = expr_create_args($1, $3); }
+         | expr_1 { $$ = expr_create_args($1, NULL); }
+         ;
+
+func_args_e: func_args { $$ = $1; }
+           | /* epsilon */ { $$ = NULL; }
+           ;
 
 expr_epsilon: expr_list { $$ = $1; }
             | /* epsilon */ { $$ = NULL; }

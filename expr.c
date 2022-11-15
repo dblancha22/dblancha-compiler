@@ -87,21 +87,33 @@ void print_list(struct expr *e)
 
 struct expr * expr_create_func(char *func, struct expr *args) {
     struct expr *name = expr_create_name(func);
-    struct expr *e1 = expr_create(EXPR_LIST, NULL, NULL);
-    e1->next = args;
+    // struct expr *e1 = expr_create(EXPR_LIST, NULL, NULL);
+    // e1->next = args;
     struct expr *e2 = expr_create(EXPR_FUNC, name, NULL);
-    e2->mid = e1;
+    e2->mid = args;
+    return e2;
+}
+
+struct expr * expr_create_args(struct expr *curr, struct expr *next)
+{
+    struct expr *e1 = expr_create(EXPR_ARG, curr, NULL);
+    e1->mid = next;
+    return e1;
 }
 
 struct expr * expr_create_arr_start(char *name, struct expr *bracks) 
 {
     struct expr *name1 = expr_create_name(name);
     struct expr *e1 = expr_create(EXPR_ARR_START, name1, NULL);
-    e1->left = name1;
-    struct expr *e2 = expr_create(EXPR_LIST, NULL, NULL);
 
-    e2->next = bracks;
-    e1->mid = e2;
+    e1->mid = bracks;
+    return e1;
+}
+
+struct expr * expr_create_indeces(struct expr *curr, struct expr *next) 
+{
+    struct expr *e1 = expr_create(EXPR_INDEX, curr, NULL);
+    e1->mid = next;
     return e1;
 }
 
@@ -267,8 +279,14 @@ void expr_print_curr(struct expr *e)
             break;
         case EXPR_FUNC:
             printf("(");
-            print_list(e->mid);
+            expr_print(NULL, e->mid);
             printf(")");
+            break;
+        case EXPR_ARG:
+            if(e->mid) {
+                printf(", ");
+                expr_print(NULL, e->mid);
+            }
             break;
         case EXPR_ARR:
             printf("{");
