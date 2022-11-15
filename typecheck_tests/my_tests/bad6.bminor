@@ -1,0 +1,13 @@
+x:integer = 6;
+y:array [3] char = {'a','b','c'};
+getval:function char(a:array [] char);
+main:function void() = 
+{
+    if(getval(y[x]) == 'b') {
+        print x;
+    }
+}
+getval:function char(a:array [] char)
+{
+    return a[2];
+}

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 bminor=./bminor
-path=./typecheck_tests/example_tests
+path=./typecheck_tests/my_tests
 
 for testfile in $path/good*.bminor
 do

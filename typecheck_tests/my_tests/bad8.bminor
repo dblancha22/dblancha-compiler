@@ -1,0 +1,3 @@
+x:boolean = true;
+y:char = 'd';
+z:integer = 4.0;

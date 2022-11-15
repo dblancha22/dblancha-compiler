@@ -1,0 +1,10 @@
+x:array [5] integer = {1,2,3,4,5};
+exp:function integer(a:integer, b:integer);
+main:function void () =
+{
+	print(exp(x[2], x[4]) );
+}
+exp:function integer (a:integer, b:integer) =
+{
+    return a^b;
+}

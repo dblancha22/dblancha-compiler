@@ -1,0 +1,7 @@
+fax resolves to global fax
+x resolves to global x
+y resolves to global y
+a resolves to global 0
+b resolves to global 1
+a resolves to global 0
+type error: can't return a integer () in a function that returns boolean

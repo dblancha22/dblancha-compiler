@@ -1,0 +1,5 @@
+x2 resolves to global x2
+x1 resolves to global x1
+a resolves to global 0
+a resolves to global 0
+type error: can't return a integer () in a function that returns boolean

@@ -1,0 +1,9 @@
+main:function void() = 
+{
+    x:integer = 5;
+    xxxxx();
+}
+xxxxx:function string() = 
+{
+    return "i need dat";
+}

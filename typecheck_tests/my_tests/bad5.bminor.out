@@ -1,0 +1,4 @@
+x resolves to global x
+y resolves to global y
+type error: can't compare a integer () to a char () (both must be integers)
+ 

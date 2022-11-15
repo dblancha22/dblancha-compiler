@@ -1,0 +1,4 @@
+eq resolves to global eq
+x resolves to global x
+a resolves to global 0
+b resolves to global 1

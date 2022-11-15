@@ -1,0 +1,2 @@
+resolve error: x is already defined in this scope
+x resolves to global x

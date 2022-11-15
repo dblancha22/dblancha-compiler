@@ -1,0 +1,6 @@
+x:array [5] integer;
+y:integer = 5;
+main:function void () =
+{
+	y = x;
+}

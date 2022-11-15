@@ -1,0 +1,3 @@
+y resolves to global y
+x resolves to global x
+type error: can't assign a array[] integer () to a integer ()

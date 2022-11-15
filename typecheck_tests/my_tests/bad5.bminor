@@ -1,0 +1,8 @@
+x:integer = 6;
+y:char = 'a';
+main:function void() = 
+{
+    if(x > y) {
+        print("sleep");
+    }
+}

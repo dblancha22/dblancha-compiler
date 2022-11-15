@@ -1,0 +1,9 @@
+x:array [5] integer = {1,2,3,4,5};
+main:function void () =
+{
+	x[1] = set();
+}
+set:function integer ()=
+{
+	return 9;
+}

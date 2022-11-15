@@ -1,0 +1,9 @@
+x:array [2] integer = {2,1};
+main:function void () =
+{
+	count:integer;
+	for(count = 0; count < 5; count++) {
+        print x[0];
+    }
+
+}

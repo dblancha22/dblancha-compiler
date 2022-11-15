@@ -1,0 +1,10 @@
+x:array [5] integer = {1,2,3,4,5};
+rem:function integer(a:integer, b:integer);
+main:function void () =
+{
+	print(rem(x[2], x[3]) );
+}
+rem:function integer (a:integer, b:integer) =
+{
+    return a%b;
+}

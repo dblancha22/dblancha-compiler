@@ -1,0 +1,13 @@
+x:array [3] boolean = {true, true, false};
+eq:function boolean(a:array [] boolean, b:integer);
+main:function void () =
+{
+	print(eq(x,2) );
+}
+eq:function boolean (a:array [] boolean, b:integer) =
+{
+    if(a[b] == true){
+        return true;
+    }
+    return false;
+}

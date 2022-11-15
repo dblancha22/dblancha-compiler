@@ -1,0 +1,7 @@
+x:integer = 5;
+y:integer = 10;
+test:function integer();
+test:function integer () =
+{
+	return x;
+}

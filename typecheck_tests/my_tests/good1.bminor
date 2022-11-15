@@ -1,0 +1,8 @@
+x:integer = 10;
+y:boolean = false;
+main:function void ()=
+{
+	if(y == false) {
+        print x;
+    }
+}

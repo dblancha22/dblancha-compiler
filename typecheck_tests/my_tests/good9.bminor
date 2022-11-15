@@ -1,0 +1,7 @@
+x:array[3] boolean = {true, true, true};
+main:function void () = 
+{
+    if(x[1] == true) {
+        print(x[2]);
+    }
+}

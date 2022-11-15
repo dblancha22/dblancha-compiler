@@ -1,0 +1,15 @@
+fax:function boolean (a:integer, b:integer);
+main:function void ()=
+{
+    x:integer = 5;
+    y:integer = 6;
+    fax(x,y);
+}
+fax:function boolean (a:integer, b:integer) = 
+{
+    if(a == b){
+        return true;
+    }
+    return a;
+}
+

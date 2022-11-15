@@ -1,0 +1,12 @@
+main:function void () = 
+{
+    x:integer = 5;
+    y:string = "why is it 2am";
+    print(x);
+    print(y);
+    if(x == 3){
+        print("no");
+    } else {
+        print("yes");
+    }
+}

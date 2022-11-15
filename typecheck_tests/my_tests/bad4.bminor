@@ -1,0 +1,6 @@
+x:integer = 6;
+x:char = 'a';
+main:function void() = 
+{
+    print x;
+}

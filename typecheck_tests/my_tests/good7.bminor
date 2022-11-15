@@ -1,0 +1,18 @@
+x:integer = 6;
+y:integer = 1;
+main:function void ()=
+{
+	x:boolean = true;
+	y:integer = 10;
+	{
+		
+		x:integer = 5;
+		{
+			
+			x:char = 'a';
+		    y:string = "yessirski";
+		}
+        y:integer = 4;
+		y = x + y;
+	}
+}

@@ -1,0 +1,5 @@
+exp resolves to global exp
+x resolves to global x
+x resolves to global x
+a resolves to global 0
+b resolves to global 1
