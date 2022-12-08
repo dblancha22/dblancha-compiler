@@ -1,0 +1,13 @@
+big_string_printer: function void (s: string) = {
+    print "IM GONNA PRINT IT I SWEAR\n";
+    print s;
+    print "HAHAHAHA I DID IT\n";
+}
+
+g: string = "first\n";
+main: function void () = {
+    l: string = "second\n";
+
+    big_string_printer(g);
+    big_string_printer(l);
+}

@@ -1,0 +1,29 @@
+adder:function integer(a:integer, x:integer);
+multer:function integer(c:integer, d:integer);
+main:function void () = 
+{
+    i:integer = 7;
+    j:integer = 8;
+    res:integer = multer(i,j);
+    print res;
+}
+
+adder:function integer(a:integer, x:integer) =
+{
+    k:integer;
+    res2:integer = 0;
+    for(k = 0; k < x; k++) {
+        res2 = res2 + a;
+    }
+    return res2;
+}
+
+multer:function integer(c:integer, d:integer) =
+{
+    res1:integer = c*d;
+    if(res1 == adder(c,d) ) {
+        return res1;
+    } else {
+        return 0;
+    }
+}

@@ -4,6 +4,8 @@
 
 struct scope * scope_stack;
 int r_err = 0;
+int wparams = 0;
+int wlocals = 0;
 
 void scope_enter()
 {
@@ -27,6 +29,13 @@ void scope_exit()
 void scope_bind(const char *name, struct symbol *s)
 {
     s->which = scope_stack->dist;
+    if(s->kind == SYMBOL_LOCAL) {
+        s->wlocals = wlocals;
+        wlocals += 1;
+    } else if (s->kind == SYMBOL_PARAM) {
+        s->wparams = wparams;
+        wparams += 1;
+    }
     if(s->type->kind != TYPE_FUNCTION && hash_table_insert(scope_stack->hash, name, s) != 1) {
         printf("resolve error: %s is already defined in this scope\n", s->name);
         r_err = 1;
@@ -47,7 +56,7 @@ void scope_bind(const char *name, struct symbol *s)
     }
 
 
-    scope_stack->dist += 1;
+    // scope_stack->dist += 1;
 }
 
 int scope_level()
@@ -65,9 +74,9 @@ struct symbol *scope_lookup(const char *name)
             if(s->kind == SYMBOL_GLOBAL) {
                 printf("%s resolves to global %s\n", name, s->name);
             } else if(s->kind == SYMBOL_LOCAL) {
-                printf("%s resolves to local %d\n", name, s->which);
+                printf("%s resolves to local %d\n", name, s->wlocals);
             }else if(s->kind = SYMBOL_PARAM) {
-                printf("%s resolves to global %d\n", name, s->which);
+                printf("%s resolves to param %d\n", name, s->wparams);
             }
 
             return s;

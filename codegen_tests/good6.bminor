@@ -1,0 +1,16 @@
+x:integer = 20;
+main: function integer () =
+{
+	for(;;)
+	{
+		if(x>-5)
+		{
+			print x, "\n";
+			x--;
+		}
+		else
+		{
+			return -5;
+		}
+	}	
+}

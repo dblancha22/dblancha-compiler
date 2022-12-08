@@ -26,7 +26,8 @@ struct expr * expr_create_integer_literal( int c )
 struct expr * expr_create_boolean_literal( const char *c )
 {
     struct expr* exs = expr_create(EXPR_BOOL, NULL, NULL);
-    if(strcmp(c, "true") ) {
+    fprintf(stderr, "creating boolean literal %s\n", c);
+    if(!strcmp(c, "true") ) {
         exs->literal_value = 1;
     } else {
         exs->literal_value = 0;
@@ -68,7 +69,9 @@ struct expr * expr_create_tern( struct expr *left, struct expr *mid, struct expr
 }
 
 struct expr * expr_create_list( struct expr *curr, struct expr *next) {
+
     struct expr *e1 = expr_create(EXPR_LIST, curr, NULL);
+
     e1->mid = next;
     return e1;
 }

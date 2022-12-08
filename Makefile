@@ -1,8 +1,11 @@
-bminor: main.o scanner.o parser.o expr.o stmt.o type.o param_list.o decl.o scope.o resolve.o symbol.o typecheck.o hash_table.o
+bminor: main.o scanner.o parser.o codegen.o expr.o stmt.o type.o param_list.o decl.o scope.o resolve.o symbol.o typecheck.o hash_table.o
 	gcc -o $@ $^ -g
 
 main.o: main.c tokens.h
 	gcc -c -o $@ main.c -g
+
+codegen.o: codegen.c codegen.h
+	gcc -c -o $@ codegen.c -g
 
 scope.o: scope.c scope.h
 	gcc -c -o $@ scope.c -g

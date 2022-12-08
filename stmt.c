@@ -26,10 +26,10 @@ struct stmt *stmt_create_list(struct stmt *curr, struct stmt *next)
 struct stmt *stmt_create_print(struct expr *e)
 {
     struct stmt *s = stmt_create(STMT_PRINT, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-    struct expr *e1 = expr_create(EXPR_LIST, NULL, NULL);
+    // struct expr *e1 = expr_create(EXPR_LIST, NULL, NULL);
     
-    e1->next = e;
-    s->expr = e1;
+    // e1->next = e;
+    s->expr = e;
     return s;
 }
 

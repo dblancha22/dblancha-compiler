@@ -45,6 +45,7 @@ struct expr {
 	struct expr *mid;
 	struct expr *right;
 	struct expr *next;
+	int reg;
 
 	/* used by various leaf exprs */
 	const char *name;

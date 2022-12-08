@@ -1,0 +1,15 @@
+f: function void (x: integer) = {
+	if (x < 0) return;
+
+	print x, '\n';
+	f(x-1);
+}
+
+a: array [3] integer = {1, 2, 3};
+
+main:function integer ()=
+{
+	a[2] = 59;
+	print a[2];
+	return 0;
+}

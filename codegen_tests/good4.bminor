@@ -1,0 +1,7 @@
+main: function integer () = 
+{
+    x:array [4] integer = {1,2,3,4};
+    print x[2];
+    
+    return 0;
+}

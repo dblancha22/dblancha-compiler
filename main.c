@@ -6,6 +6,7 @@
 #include "scope.h"
 #include "resolve.h"
 #include "typecheck.h"
+#include "codegen.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -28,6 +29,7 @@ int parse(char *f);
 int print(char *f);
 int resolve(char *f);
 int typecheck(char *f);
+int codegen(char *inf, char *outf);
 
 
 
@@ -46,6 +48,8 @@ int main(int argc, char **argv)
             return resolve(argv[i+1]);
         } else if (!strcmp(argv[i], "-typecheck")) {
             return typecheck(argv[i+1]);
+        } else if (!strcmp(argv[i], "-codegen")) {
+            return codegen(argv[i+1], argv[i+2]);
         }
     }
 
@@ -125,8 +129,9 @@ int print(char *f) {
         return 1;
     }
     
+    fprintf(stderr, "%d\n", root->code->next->expr->left->kind);
     decl_print_list(root);
-
+    fprintf(stderr, "finished codegen\n");
     return 0;
 
 }
@@ -169,6 +174,22 @@ int typecheck(char *f)
     return err;
 
 
+}
+
+int codegen(char *inf, char *outf)
+{
+    if(!outf) {
+        printf("need an output file\n");
+        return 1;
+    }
+
+    if(typecheck(inf) == 1) {
+        return 1;
+    }
+    freopen(outf, "w", stdout);
+    decl_codegen(root, 2);
+
+    return 0;
 }
 
 void print_token(token_t t) {

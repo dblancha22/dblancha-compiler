@@ -1,0 +1,19 @@
+array_printer: function void (a: array [] integer, l: integer) = {
+    i: integer;
+    for (i = 0; i < l; i++)
+        print a[i], ' ';
+    print "\n";
+}
+
+a: array [10] integer = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+
+main: function void () = {
+    array_printer(a, 10);
+
+    i: integer;
+    for (i = 0; i < 10; i++) {
+        a[i] = i + 2;
+    }
+
+    array_printer(a, 10);
+}

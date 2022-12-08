@@ -1,12 +1,15 @@
 #include "resolve.h"
 #include "scope.h"
 
+extern int wparams;
+extern int wlocals;
+
 void decl_resolve(struct decl *d)
 {
     if (!d)
         return;
 
-    symbol_t kind = scope_level() > 1 ? SYMBOL_LOCAL : SYMBOL_GLOBAL;
+    symbol_t kind = scope_level() > 0 ? SYMBOL_LOCAL : SYMBOL_GLOBAL;
     d->symbol = symbol_create(kind, d->type, d->name);
 
     if(!d->code && d->type->kind == TYPE_FUNCTION) {
@@ -20,6 +23,10 @@ void decl_resolve(struct decl *d)
         param_list_resolve(d->type->params);
         stmt_resolve(d->code);
         scope_exit();
+        d->local_count = wlocals;
+        d->param_count = wparams;
+        wparams = 0;
+        wlocals = 0;
     }
     decl_resolve(d->next);
 }

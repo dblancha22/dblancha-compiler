@@ -1,0 +1,13 @@
+c:char = 'a';
+
+main:function integer () = 
+{
+    alpha:array [5] = {'d','r','a','f','k'};
+    i:integer;
+    for(i = 0; i < 5; i++) {
+        if(alpha[i] == c) {
+            return i;
+        }
+    }
+    return 25;
+}
