@@ -1,0 +1,10 @@
+s:string = "wow";
+s2:string = "WOW";
+main:function void () =
+{
+    if(s == s2) {
+        print "no cap";
+    } else {
+        print "cap";
+    }
+}

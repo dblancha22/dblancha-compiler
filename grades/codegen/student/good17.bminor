@@ -1,0 +1,8 @@
+global_s: string = "equals\n";
+
+main: function integer (argc: integer) = {
+    local_s: string = "equals\n";
+    print "I have ", argc, " function arguments\n";
+
+    print "also, global_s == local_s = ", global_s == local_s, " very cool\n";
+}

@@ -1,0 +1,15 @@
+big_global: string = "I AM THE BIGGEST\n";
+
+main: function void () = {
+    s2: string = "NO I AM BIGGER\n";
+
+    s_temp: string = "I AM TEMPORARY\n";
+
+    print big_global, s2, s_temp;
+
+    s_temp = big_global;
+    big_global = s2;
+    s2 = s_temp;
+
+    print big_global, s2, s_temp;
+}

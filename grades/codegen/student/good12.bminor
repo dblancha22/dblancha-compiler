@@ -1,0 +1,6 @@
+i:char= 'x';
+main:function void () =
+{
+	n:char ='n';
+	print "this", i, "that"; 
+}

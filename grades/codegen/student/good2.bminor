@@ -1,0 +1,7 @@
+x:integer=6;
+main:function integer () =
+{
+	y:integer = 3;
+    z:integer = x + (y++);
+	return (z - 20) * y + x*4;
+}

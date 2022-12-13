@@ -1,0 +1,10 @@
+main:function integer () =
+{
+    i:integer = 0;
+    for(;;) {
+        if(i > 23) {
+            return i;
+        }
+        i++;
+    }
+}

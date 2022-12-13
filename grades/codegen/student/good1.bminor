@@ -1,0 +1,21 @@
+adder: function integer(x:integer) =
+{
+    if(i > 100) {
+        return i;
+    } else {
+        return adder(i+13);
+    }
+}
+
+
+main: function integer () =
+{
+	i: integer;
+
+
+	for(i=0;i<30;i=i+1) {
+		print i, " ", adder(i), "\n";
+	}
+
+	return 0;
+}

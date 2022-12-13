@@ -1,0 +1,13 @@
+mult: function integer (x:integer, y:integer);
+main:function void () = 
+{
+    a:integer = 7;
+    b:integer = 8;
+    print mult(a,b);
+}
+
+mult:function integer (x:integer, y:integer)
+{
+    return x*y;
+}
+

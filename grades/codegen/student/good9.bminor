@@ -1,0 +1,8 @@
+t:boolean = TRUE;
+
+main:function integer() {
+    if(t) {
+        return 1;
+    }
+    return 0;
+}

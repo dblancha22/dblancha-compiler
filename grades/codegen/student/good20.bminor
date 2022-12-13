@@ -1,0 +1,8 @@
+the_final_one: function string (s: string) = {
+    print "THIS IS THE FINAL ", s, "!!!!!!\n";
+    return "FINAL TEST I'M FREE!!!\n";
+}
+
+main: function void () = {
+    print the_final_one("COMPILER TO END ALL COMPILERS");
+}
